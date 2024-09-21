@@ -2,6 +2,7 @@
 
 import { useMemo, useRef } from "react";
 import { motion } from "framer-motion";
+import AnimationWrapper from "../animation-wrapper";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -15,6 +16,8 @@ import {
   FaAngellist,
   FaYoutube,
 } from "react-icons/fa";
+
+import { PinContainer } from "@/components/ui/3d-pin";
 import {
   Modal,
   ModalBody,
@@ -63,6 +66,8 @@ const socialIcons = [
 ];
 
 export default function ClientHomeView({ data }) {
+  // const setVariants = useMemo(() => variants(), []);
+  const containerRef = useRef(null);
   const images = [
     "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -72,17 +77,17 @@ export default function ClientHomeView({ data }) {
   ];
   return (
     <div className="w-full flex gap-4 items-center justify-center">
-      <div className="w-[50%] flex justify-center items-center">
-        <div>
+      <div className="w-[50%] flex flex-col p-4">
+        <div className="flex flex-col">
           <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-medium leading-normal">
             {data && data.length
               ? data[0]?.heading.split(" ").map((item, index) => (
                   <span
-                    key={item.index}
+                    key={index}
                     className={`${
                       index === 2 || index === 3
                         ? "text-green-600"
-                        : "text-[#000]"
+                        : "text-white"
                     }`}
                   >
                     {item}{" "}
@@ -90,14 +95,14 @@ export default function ClientHomeView({ data }) {
                 ))
               : null}
           </h1>
-          <p className="text-[#000] mt-4 mb-8 font-bold">
+          <p className="text-white mt-4 mb-8 font-bold">
             {data && data.length ? data[0]?.summary : null}
           </p>
         </div>
-        <div className="py-40  flex items-center justify-center">
+        <div className=" flex">
           <Modal>
             <ModalTrigger className="bg-black dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
-              <span className="group-hover/modal-btn:translate-x-40 text-green-500  text-center transition duration-500">
+              <span className="group-hover/modal-btn:translate-x-40 text-green-500 text-center transition duration-500">
                 visit code with smile
               </span>
               <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
@@ -214,8 +219,17 @@ export default function ClientHomeView({ data }) {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia,
-        explicabo!
+        <div className="h-[40rem] w-full flex items-center justify-center ">
+          <PinContainer
+            title="codewithsmile"
+            href="www.youtube.com/@codewithsmile01"
+          >
+            <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
+              <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
+              <Image src={aiImage} alt="pp" />
+            </div>
+          </PinContainer>
+        </div>
       </div>
     </div>
   );
