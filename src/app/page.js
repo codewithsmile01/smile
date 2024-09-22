@@ -1,7 +1,5 @@
 import ClientAboutView from "@/components/client-view/about";
 import ClientHomeView from "@/components/client-view/home";
-import Navbar from "@/components/client-view/navbar/Navbar";
-// import Image from "next/image";
 
 async function extractAllDatas(currentSection) {
   const res = await fetch(`http://localhost:3000/api/${currentSection}/get`, {

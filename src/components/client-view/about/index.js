@@ -7,7 +7,7 @@ import Image from "next/image";
 import aboutMeImage from "../../../assets/about-image.png";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { PinContainer } from "@/components/ui/3d-pin";
-import { LampContainer } from "@/components/ui/lamp";
+import { CardDemo } from "../card";
 
 function variants() {
   return {
@@ -90,7 +90,24 @@ export default function ClientAboutView({ data }) {
           ))}
         </AnimationWrapper>
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center flex-col">
+        <AnimationWrapper>
+          <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
+            <h1 className="leading-[70px] text-3xl lg:text-4xl xl:text-5xl font-medium">
+              {headingText.split(" ").map((item, index) => (
+                <span
+                  key={index}
+                  className={`${
+                    index === 6 ? "text-green-600" : "text-[#000]"
+                  }`}
+                >
+                  {item}{" "}
+                </span>
+              ))}
+            </h1>
+            <p className="text-white font-bold">{data?.aboutme}</p>
+          </div>
+        </AnimationWrapper>
         <div className="flex justify-center items-center w-[50%]">
           <div className="h-[40rem] w-full flex items-center justify-center ">
             <PinContainer
@@ -99,43 +116,15 @@ export default function ClientAboutView({ data }) {
             >
               <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
                 <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500" />
+
                 <Image src={aboutMeImage} alt="About photo" />
               </div>
             </PinContainer>
           </div>
         </div>
+        {/* card============================= */}
         <div>
-          <LampContainer>
-            <motion.h1
-              initial={{ opacity: 0.5, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              className=" bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
-            >
-              <AnimationWrapper className={"flex items-center w-full p-4"}>
-                <motion.div
-                  variants={setVariants}
-                  className="grid gap-4 grid-cols-3 h-full max-h-[200px] w-full"
-                >
-                  {data?.skills.split(",").map((skill, index) => (
-                    <motion.div
-                      className="w-full flex justify-center items-center"
-                      variants={skillItemVariant}
-                      key={index}
-                    >
-                      <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[160px] px-6 border-[2px] border-green-main bg-[#fff] text-[#000] font-semibold rounded-lg text-xl tracking-widest hover:shadow-green-main transition-all outline-none">
-                        {skill}
-                      </button>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </AnimationWrapper>
-            </motion.h1>
-          </LampContainer>
+          <CardDemo />
         </div>
       </div>
     </div>
