@@ -1,4 +1,5 @@
 import ClientAboutView from "@/components/client-view/about";
+import { CardDemo } from "@/components/client-view/card";
 import ClientHomeView from "@/components/client-view/home";
 
 async function extractAllDatas(currentSection) {
@@ -17,6 +18,7 @@ export default async function Home() {
   const experienceSectionData = await extractAllDatas("experience");
   const educationSectionData = await extractAllDatas("education");
   const projectSectionData = await extractAllDatas("project");
+  const cardSectionData = await extractAllDatas("card");
   return (
     <div className="h-full w-full dark:bg-black bg-blue-700  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center">
       <ClientHomeView data={homeSectionData} />
@@ -25,6 +27,7 @@ export default async function Home() {
           aboutSectionData && aboutSectionData.length ? aboutSectionData[0] : []
         }
       />
+      <CardDemo data={cardData} className="hidden" />
       {/* <ClientExperienceAndEducationView
       educationData={educationSectionData}
       experienceData={experienceSectionData}
