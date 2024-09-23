@@ -58,7 +58,7 @@ export default function ClientAboutView({ data }) {
     <div>
       <div>
         {" "}
-        <AnimationWrapper className="rounded-lg w-full grid-flow-row grid grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-green-600 z-10">
+        <AnimationWrapper className="rounded-lg w-full flex sm:flex-col md:flex-row gap-8 justify-center items-center py-9 z-10">
           {aboutDataInfo.map((infoItem, index) => (
             <motion.div
               className={`flex items-center justify-start
@@ -74,10 +74,10 @@ export default function ClientAboutView({ data }) {
               custom={{ duration: 2 + index }}
               variants={setVariants}
             >
-              <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+              <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-transparent dark:bg-zinc-900 ">
                 <div className="flex m-0 w-40 sm:w-auto">
                   <div className="flex flex-col">
-                    <p className="text-[50px] text-green-main font-bold">
+                    <p className="text-[50px] text-green-600 font-bold">
                       {infoItem.value}+
                     </p>
                     <p className="text-[25px] font-bold text-[#000000]">
@@ -108,7 +108,7 @@ export default function ClientAboutView({ data }) {
             <p className="text-white font-bold">{data?.aboutme}</p>
           </div>
         </AnimationWrapper>
-        <div className="flex justify-center items-center w-[50%]">
+        <div className=" flex sm:flex-col md:flex-row gap-8 justify-center items-center p-4">
           <div className="h-[40rem] w-full flex items-center justify-center ">
             <PinContainer
               title="codewithsmile"
@@ -121,10 +121,9 @@ export default function ClientAboutView({ data }) {
               </div>
             </PinContainer>
           </div>
-        </div>
-        {/* card============================= */}
-        <div>
-          <CardDemo />
+          <div>
+            <CardDemo />
+          </div>
         </div>
       </div>
     </div>
