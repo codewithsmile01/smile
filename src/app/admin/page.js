@@ -8,7 +8,7 @@ import AdminHomeView from "@/components/admin-view/home";
 import Login from "@/components/admin-view/login";
 import AdminProjectView from "@/components/admin-view/project";
 import { addData, getData, login, updateData } from "@/services";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 const initialHomeFormData = {
   heading: "",
@@ -135,7 +135,7 @@ export default function AdminView() {
     },
   ];
 
-  const extractAllDatas = useCallback(async () => {
+  async function extractAllDatas() {
     const response = await getData(currentSelectedTab);
 
     if (
@@ -164,9 +164,9 @@ export default function AdminView() {
         [currentSelectedTab]: response && response.data,
       });
     }
-  }, [currentSelectedTab, allData]);
+  }
 
-  // console.log(allData, 'allData');
+  console.log(allData, "allData");
 
   async function handleSaveData() {
     const dataMap = {
@@ -180,9 +180,9 @@ export default function AdminView() {
     const response = update
       ? await updateData(currentSelectedTab, dataMap[currentSelectedTab])
       : await addData(currentSelectedTab, dataMap[currentSelectedTab]);
-    // console.log(response, "response");
+    console.log(response, "response");
 
-    if (response.success) {
+    if (response?.success) {
       resetFormDatas();
       extractAllDatas();
     }
@@ -190,7 +190,7 @@ export default function AdminView() {
 
   useEffect(() => {
     extractAllDatas();
-  }, [extractAllDatas]);
+  }, [currentSelectedTab]);
 
   function resetFormDatas() {
     setHomeViewFormData(initialHomeFormData);
@@ -200,7 +200,7 @@ export default function AdminView() {
     setProjectViewFormData(initialProjectFormData);
   }
 
-  // console.log(allData, homeViewFormData, "homeViewFormData");
+  console.log(allData, homeViewFormData, "homeViewFormData");
 
   useEffect(() => {
     setAuthUser(JSON.parse(sessionStorage.getItem("authUser")));
@@ -209,7 +209,7 @@ export default function AdminView() {
   async function handleLogin() {
     const res = await login(loginFormData);
 
-    // console.log(res, "login");
+    console.log(res, "login");
 
     if (res?.success) {
       setAuthUser(true);
