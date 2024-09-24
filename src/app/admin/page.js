@@ -233,7 +233,7 @@ export default function AdminView() {
           <button
             key={item.id}
             type="button"
-            className="p-4 font-bold text-xl text-black"
+            className="p-4 font-bold text-xl text-red-700"
             onClick={() => {
               setCurrentSelectedTab(item.id);
               resetFormDatas();

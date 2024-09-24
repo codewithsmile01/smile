@@ -17,7 +17,11 @@ const controls = [
   },
 ];
 
-export default function AdminHomeView({ formData, setFormData, handleSaveData }) {
+export default function AdminHomeView({
+  formData,
+  setFormData,
+  handleSaveData,
+}) {
   console.log(formData);
   return (
     <div className="w-full">
@@ -27,7 +31,10 @@ export default function AdminHomeView({ formData, setFormData, handleSaveData })
           formData={formData}
           setFormData={setFormData}
         />
-        <button onClick={()=>handleSaveData('home')} className="mt-[10px] border border-green-600 p-4 font-bold text-[16px]">
+        <button
+          onClick={() => handleSaveData("home")}
+          className="mt-[10px] border border-green-600 text-black p-4 font-bold text-[16px]"
+        >
           Add Info
         </button>
       </div>

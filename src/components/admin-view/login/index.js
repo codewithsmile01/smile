@@ -28,7 +28,7 @@ export default function Login({ formData, setFormData, handleLogin }) {
         />
         <button
           onClick={handleLogin}
-          className="mt-[10px] border border-green-600 p-4 font-bold text-[16px]"
+          className="mt-[10px] border text-black hover:shadow-lg shadow-red-700 border-green-600 p-4 font-bold text-[16px]"
         >
           Login
         </button>

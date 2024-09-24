@@ -43,11 +43,14 @@ export default function AdminExperienceView({
 }) {
   return (
     <div className="w-full">
-      <div className="bg-[#ffffff] shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div className="mb-10">
+      <div className="bg-white  gap-4 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div className="mb-10 bg-gray-500 p-4 flex justify-center items-center gap-4 flex-wrap rounded-lg">
           {data && data.length
-            ? data.map((item) => (
-                <div className="flex flex-col gap-4 border p-4 border-green-600">
+            ? data.map((item, index) => (
+                <div
+                  key={item.index}
+                  className="flex flex-col rounded-lg gap-4 border p-4 border-green-600"
+                >
                   <p>{item.position}</p>
                   <p>{item.company}</p>
                   <p>{item.duration}</p>

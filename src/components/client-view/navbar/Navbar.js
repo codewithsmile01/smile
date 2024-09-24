@@ -1,47 +1,75 @@
 "use client";
-import React, { useState, useEffect } from "react";
+
+import React from "react";
+import { FloatingDock } from "@/components/ui/floating-dock";
 import {
-  HoveredLink,
-  Menu,
-  MenuItem,
-  ProductItem,
-} from "@/components/ui/navbar-menu";
-import { cn } from "@/lib/utils";
+  IconBrandGithub,
+  IconBrandX,
+  IconExchange,
+  IconHome,
+  IconNewSection,
+  IconTerminal2,
+} from "@tabler/icons-react";
 import Image from "next/image";
 import codewithsmile from "../../../assets/codewithsmile.png";
-import Link from "next/link";
 
-function Navbar({ className }) {
-  const [active, setActive] = useState(null);
+function Navbar() {
+  const links = [
+    {
+      title: "Code with smile",
+      icon: (
+        <Image
+          src={codewithsmile}
+          className="rounded-full"
+          width={20}
+          height={20}
+          alt=" Logo"
+        />
+      ),
+      href: "/",
+    },
+    {
+      title: "Home",
+      icon: (
+        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "/",
+    },
+
+    {
+      title: "About",
+      icon: (
+        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#about",
+    },
+    {
+      title: "Experience",
+      icon: (
+        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#experience",
+    },
+
+    {
+      title: "Project",
+      icon: (
+        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#project",
+    },
+
+    {
+      title: "Contact",
+      icon: (
+        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#contact",
+    },
+  ];
   return (
-    <div
-      className={cn(
-        "fixed bg-transparent top-10 inset-x-0 max-w-2xl mx-auto z-50",
-        className
-      )}
-    >
-      <Menu setActive={setActive}>
-        <Link href="/">
-          <Image
-            src={codewithsmile}
-            alt="logo "
-            width={40}
-            height={40}
-            className=" rounded-full "
-          />
-        </Link>
-        <MenuItem setActive={setActive} active={active} item=" Code with smile">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/">Home</HoveredLink>
-            <HoveredLink href="#about">About</HoveredLink>
-            <HoveredLink href="#experience">Experience</HoveredLink>
-            <HoveredLink href="#project">Project</HoveredLink>
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Contact">
-          <HoveredLink href="#contact">Contact</HoveredLink>
-        </MenuItem>
-      </Menu>
+    <div className="flex items-center justify-center bg-transparent absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 w-full">
+      <FloatingDock mobileClassName="translate-y-20" items={links} />
     </div>
   );
 }
