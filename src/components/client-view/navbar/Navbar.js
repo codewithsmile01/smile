@@ -2,6 +2,7 @@
 
 import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
+import { BackgroundLines } from "@/components/ui/background-lines";
 import {
   IconBrandGithub,
   IconBrandX,
@@ -68,9 +69,11 @@ function Navbar() {
     },
   ];
   return (
-    <div className="flex items-center justify-center bg-transparent absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 w-full">
-      <FloatingDock mobileClassName="translate-y-20" items={links} />
-    </div>
+    <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
+      <div className="flex z-40 items-center justify-center bg-transparent  pt-20">
+        <FloatingDock mobileClassName="translate-y-20" items={links} />
+      </div>
+    </BackgroundLines>
   );
 }
 

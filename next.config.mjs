@@ -6,6 +6,7 @@ const nextConfig = {
         hostname: "assets.aceternity.com",
         hostname: "images.unsplash.com",
         hostname: "assets.aceternity.com",
+        hostname: "images.unsplash.com",
       },
     ],
   },
