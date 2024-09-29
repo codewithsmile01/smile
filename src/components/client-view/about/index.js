@@ -80,6 +80,7 @@ export default function ClientAboutView({ data }) {
                     <p className="text-[50px] text-green-600 font-bold">
                       {infoItem.value}+
                     </p>
+
                     <p className="text-[25px] font-bold text-[#000000]">
                       {infoItem.label}
                     </p>
@@ -105,6 +106,7 @@ export default function ClientAboutView({ data }) {
                 </span>
               ))}
             </h1>
+
             <p className="text-white font-bold">{data?.aboutme}</p>
           </div>
         </AnimationWrapper>

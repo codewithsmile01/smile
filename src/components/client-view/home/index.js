@@ -28,6 +28,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import aiImage from "../../../assets/ai-image.png";
+import { FlipWords } from "@/components/ui/flip-words";
 
 const socialIcons = [
   {
@@ -68,6 +69,14 @@ const socialIcons = [
 export default function ClientHomeView({ data }) {
   // const setVariants = useMemo(() => variants(), []);
   const containerRef = useRef(null);
+  const words = [
+    "web developer",
+    "front end developer",
+    "back end developer",
+    "full stack developer",
+    "graphic designer",
+    "api development",
+  ];
   const images = [
     "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -95,6 +104,10 @@ export default function ClientHomeView({ data }) {
                 ))
               : null}
           </h1>
+            <div className="text-4xl flex flex-col font-normal text-green-600 dark:text-neutral-400">
+              I&apos;m a
+              <FlipWords words={words} />
+            </div>
           <p className="text-white mt-4 mb-8 font-bold">
             {data && data.length ? data[0]?.summary : null}
           </p>
