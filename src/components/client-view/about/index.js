@@ -9,6 +9,7 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { PinContainer } from "@/components/ui/3d-pin";
 import { CardDemo } from "../card";
 
+
 function variants() {
   return {
     offscreen: {

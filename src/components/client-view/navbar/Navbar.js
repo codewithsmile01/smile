@@ -4,12 +4,11 @@ import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import {
-  IconBrandGithub,
-  IconBrandX,
-  IconExchange,
-  IconHome,
-  IconNewSection,
-  IconTerminal2,
+  IconHomeFilled,
+  IconBrandMantine,
+  IconMicroscopeOff,
+  IconPrompt,
+  IconNetwork,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import codewithsmile from "../../../assets/codewithsmile.png";
@@ -31,40 +30,30 @@ function Navbar() {
     },
     {
       title: "Home",
-      icon: (
-        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
+      icon: <IconHomeFilled className="h-full w-full text-black" />,
       href: "/",
     },
 
     {
       title: "About",
-      icon: (
-        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
+      icon: <IconBrandMantine className="h-full w-full text-black" />,
       href: "#about",
     },
     {
       title: "Experience",
-      icon: (
-        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
+      icon: <IconMicroscopeOff className="h-full w-full text-black" />,
       href: "#experience",
     },
 
     {
       title: "Project",
-      icon: (
-        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
+      icon: <IconPrompt className="h-full w-full text-black" />,
       href: "#project",
     },
 
     {
       title: "Contact",
-      icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
+      icon: <IconNetwork className="h-full w-full text-black" />,
       href: "#contact",
     },
   ];

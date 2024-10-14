@@ -21,7 +21,7 @@ export default async function Home() {
   const educationSectionData = await extractAllDatas("education");
   const projectSectionData = await extractAllDatas("project");
   return (
-    <div className="h-full w-full dark:bg-black bg-blue-700  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center overflow-hidden">
+    <div className="h-full w-full dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-center overflow-hidden">
       <ClientHomeView data={homeSectionData} />
       <ClientAboutView
         data={

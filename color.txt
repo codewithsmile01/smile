@@ -1,0 +1,4 @@
+background color = 402E7A
+text = 3DC2EC
+text tow = C147E9
+box color = 03C988

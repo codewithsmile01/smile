@@ -104,7 +104,7 @@ export default function ClientHomeView({ data }) {
                 ))
               : null}
           </h1>
-            <div className="text-4xl flex flex-col font-normal text-green-600 dark:text-neutral-400">
+            <div className="text-4xl flex flex-col font-normal text-white dark:text-neutral-400">
               I&apos;m a
               <FlipWords words={words} />
             </div>
