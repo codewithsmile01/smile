@@ -9,7 +9,6 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { PinContainer } from "@/components/ui/3d-pin";
 import { CardDemo } from "../card";
 
-
 function variants() {
   return {
     offscreen: {
@@ -58,7 +57,24 @@ export default function ClientAboutView({ data }) {
   return (
     <div>
       <div>
-        {" "}
+        <AnimationWrapper>
+          <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
+            <h1 className="leading-[70px] text-3xl lg:text-4xl xl:text-5xl font-medium">
+              {headingText.split(" ").map((item, index) => (
+                <span
+                  key={index}
+                  className={`${
+                    index === 6 ? "text-[#C147E9]" : "text-[rgb(61,194,236)]"
+                  }`}
+                >
+                  {item}{" "}
+                </span>
+              ))}
+            </h1>
+
+            <p className="text-white text-4xl font-bold">{data?.aboutme}</p>
+          </div>
+        </AnimationWrapper>{" "}
         <AnimationWrapper className="rounded-lg w-full flex sm:flex-col md:flex-row gap-8 justify-center items-center py-9 z-10">
           {aboutDataInfo.map((infoItem, index) => (
             <motion.div
@@ -75,14 +91,14 @@ export default function ClientAboutView({ data }) {
               custom={{ duration: 2 + index }}
               variants={setVariants}
             >
-              <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-transparent dark:bg-zinc-900 ">
+              <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white ">
                 <div className="flex m-0 w-40 sm:w-auto">
                   <div className="flex flex-col">
-                    <p className="text-[50px] text-green-600 font-bold">
+                    <p className="text-[50px] text-[#3DC2EC] font-bold">
                       {infoItem.value}+
                     </p>
 
-                    <p className="text-[25px] font-bold text-[#000000]">
+                    <p className="text-[25px] font-bold text-[#402E7A]">
                       {infoItem.label}
                     </p>
                   </div>
@@ -93,24 +109,6 @@ export default function ClientAboutView({ data }) {
         </AnimationWrapper>
       </div>
       <div className="flex justify-center items-center flex-col">
-        <AnimationWrapper>
-          <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-            <h1 className="leading-[70px] text-3xl lg:text-4xl xl:text-5xl font-medium">
-              {headingText.split(" ").map((item, index) => (
-                <span
-                  key={index}
-                  className={`${
-                    index === 6 ? "text-green-600" : "text-[#000]"
-                  }`}
-                >
-                  {item}{" "}
-                </span>
-              ))}
-            </h1>
-
-            <p className="text-white font-bold">{data?.aboutme}</p>
-          </div>
-        </AnimationWrapper>
         <div className=" flex sm:flex-col md:flex-row gap-8 justify-center items-center p-4">
           <div className="h-[40rem] w-full flex items-center justify-center ">
             <PinContainer

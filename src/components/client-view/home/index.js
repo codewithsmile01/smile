@@ -8,14 +8,16 @@ import {
   FaLinkedinIn,
   FaInstagram,
   FaTwitter,
-  FaPaperPlane,
-  FaAccusoft,
-  FaAddressCard,
-  FaAffiliatetheme,
-  FaAnchor,
-  FaAngellist,
   FaYoutube,
 } from "react-icons/fa";
+import {
+  IconBrandNextjs,
+  IconBrandReact,
+  IconBrandTailwind,
+  IconBrandBootstrap,
+  IconBrandJavascript,
+  IconHtml,
+} from "@tabler/icons-react";
 
 import { PinContainer } from "@/components/ui/3d-pin";
 import {
@@ -33,36 +35,19 @@ import { FlipWords } from "@/components/ui/flip-words";
 const socialIcons = [
   {
     id: "facebook",
-    icon: (
-      <FaFacebookF
-        color="rgba(13, 183, 96, 1)"
-        className="w-[20px] h-[20px] "
-      />
-    ),
+    icon: <FaFacebookF color="black" className="w-[20px] h-[20px] " />,
   },
   {
     id: "twitter",
-    icon: (
-      <FaTwitter color="rgba(13, 183, 96, 1)" className="w-[20px] h-[20px] " />
-    ),
+    icon: <FaTwitter color="black" className="w-[20px] h-[20px] " />,
   },
   {
     id: "linkedin",
-    icon: (
-      <FaLinkedinIn
-        color="rgba(13, 183, 96, 1)"
-        className="w-[20px] h-[20px] "
-      />
-    ),
+    icon: <FaLinkedinIn color="black" className="w-[20px] h-[20px] " />,
   },
   {
     id: "instagram",
-    icon: (
-      <FaInstagram
-        color="rgba(13, 183, 96, 1)"
-        className="w-[20px] h-[20px] "
-      />
-    ),
+    icon: <FaInstagram color="black" className="w-[20px] h-[20px] " />,
   },
 ];
 
@@ -88,15 +73,15 @@ export default function ClientHomeView({ data }) {
     <div className="w-full flex gap-4 items-center justify-center">
       <div className="w-[50%] flex flex-col p-4">
         <div className="flex flex-col">
-          <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-medium leading-normal">
+          <h1 className="mb-4 text-4xl font-bold leading-normal">
             {data && data.length
               ? data[0]?.heading.split(" ").map((item, index) => (
                   <span
                     key={index}
                     className={`${
                       index === 2 || index === 3
-                        ? "text-green-600"
-                        : "text-white"
+                        ? "text-[#3DC2EC]"
+                        : "text-[#C147E9]"
                     }`}
                   >
                     {item}{" "}
@@ -104,18 +89,18 @@ export default function ClientHomeView({ data }) {
                 ))
               : null}
           </h1>
-            <div className="text-4xl flex flex-col font-normal text-white dark:text-neutral-400">
-              I&apos;m a
-              <FlipWords words={words} />
-            </div>
-          <p className="text-white mt-4 mb-8 font-bold">
+          <div className="text-4xl flex flex-col font-normal text-[#3DC2EC] dark:text-neutral-400">
+            I&apos;m a
+            <FlipWords words={words} />
+          </div>
+          <p className="text-[#3DC2EC] text-xl mt-4 mb-8 font-bold">
             {data && data.length ? data[0]?.summary : null}
           </p>
         </div>
         <div className=" flex">
           <Modal>
-            <ModalTrigger className="bg-black dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
-              <span className="group-hover/modal-btn:translate-x-40 text-green-500 text-center transition duration-500">
+            <ModalTrigger className="bg-transparent text-[#3DC2EC] flex justify-center border group/modal-btn">
+              <span className="group-hover/modal-btn:translate-x-40 text-[#3DC2EC] text-center transition shadow-lg shadow-red-500 duration-500">
                 visit code with smile
               </span>
               <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
@@ -124,7 +109,7 @@ export default function ClientHomeView({ data }) {
             </ModalTrigger>
             <ModalBody>
               <ModalContent>
-                <h4 className="text-lg flex flex-wrap items-center justify-center gap-4  md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
+                <h4 className="text-lg flex flex-wrap items-center justify-center gap-4  md:text-2xl text-[#3DC2EC] font-bold text-center mb-8">
                   {socialIcons.map((item) => (
                     <div
                       key={item.id}
@@ -155,7 +140,7 @@ export default function ClientHomeView({ data }) {
                         rotate: 0,
                         zIndex: 100,
                       }}
-                      className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
+                      className="rounded-xl -mr-4 mt-4 p-1 bg-white border border-neutral-100 flex-shrink-0 overflow-hidden"
                     >
                       <Image
                         src={image}
@@ -169,48 +154,36 @@ export default function ClientHomeView({ data }) {
                 </div>
                 <div className="py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
                   <div className="flex  items-center justify-center">
-                    <FaPaperPlane className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                    <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                      Next js
-                    </span>
+                    <IconBrandNextjs className="mr-1 text-white h-8 w-8" />
+                    <span className="text-black font-bold">Next js</span>
                   </div>
                   <div className="flex items-center justify-center">
-                    <FaAccusoft className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                    <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                      react js
-                    </span>
+                    <IconBrandReact className="mr-1 text-white h-8 w-8" />
+                    <span className="text-black font-bold">react js</span>
                   </div>
                   <div className="flex items-center justify-center">
-                    <FaAddressCard className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                    <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                      Tailwind css
-                    </span>
+                    <IconBrandTailwind className="mr-1 text-white h-8 w-8" />
+                    <span className="text-black font-bold">Tailwind css</span>
                   </div>
                   <div className="flex  items-center justify-center">
-                    <FaAffiliatetheme className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                    <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                      Bootstrap
-                    </span>
+                    <IconBrandBootstrap className="mr-1 text-white h-8 w-8" />
+                    <span className="text-black font-bold">Bootstrap</span>
                   </div>
                   <div className="flex items-center justify-center">
-                    <FaAnchor className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                    <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                      javascript
-                    </span>
+                    <IconBrandJavascript className="mr-1 text-white h-8 w-8" />
+                    <span className="text-black font-bold">javascript</span>
                   </div>
                   <div className="flex items-center justify-center">
-                    <FaAngellist className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
-                    <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                      vanilla css and html
-                    </span>
+                    <IconHtml className="mr-1 text-white h-8 w-8" />
+                    <span className="text-black font-bold">css and html</span>
                   </div>
                 </div>
               </ModalContent>
               <ModalFooter className="gap-4">
-                <button className="px-2 py-1 bg-green-500 font-bold text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
+                <button className="px-2 py-1 bg-[#03C988] font-bold text-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
                   code with smile
                 </button>
-                <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-1  rounded-md border border-black">
+                <button className="bg-[#03C988] px-4 py-4 text-white  text-sm rounded-md border border-white">
                   <Link
                     href="www.youtube.com/@codewithsmile01"
                     target="_blank"

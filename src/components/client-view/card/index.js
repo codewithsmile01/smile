@@ -71,32 +71,32 @@ const Skeleton = () => {
     <div className=" overflow-hidden h-full relative flex items-center justify-center">
       <div className="flex flex-wrap justify-center items-center gap-4">
         <Container>
-          <div className="bg-lime-700 p-2 m-2 rounded-full text-black font-bold text-lg hover:bg-red-700">
+          <div className="bg-white p-2 m-2 rounded-full text-[#402E7A] font-bold text-lg hover:bg-[#402E7A] hover:text-white">
             Next js
           </div>
         </Container>
         <Container>
-          <div className="bg-lime-700 p-2 m-2 rounded-full text-black font-bold text-lg  hover:bg-red-700">
+          <div className="bg-white p-2 m-2 rounded-full text-[#402E7A] font-bold text-lg hover:bg-[#402E7A] hover:text-white">
             React js
           </div>
         </Container>
         <Container>
-          <button className="bg-lime-700 p-2 m-2 rounded-full text-black font-bold text-lg flex justify-center items-center  hover:bg-red-700">
+          <button className="bg-white p-2 m-2 rounded-full text-[#402E7A] font-bold text-lg hover:bg-[#402E7A] hover:text-white">
             Tailwind css
           </button>
         </Container>
         <Container>
-          <div className="bg-lime-700 p-2 m-2 rounded-full text-black font-bold text-lg  hover:bg-red-700">
+          <div className="bg-white p-2 m-2 rounded-full text-[#402E7A] font-bold text-lg hover:bg-[#402E7A] hover:text-white">
             Bootstrap css
           </div>
         </Container>
         <Container>
-          <div className="bg-lime-700 p-2 m-2 rounded-full text-black font-bold text-lg  hover:bg-red-700">
+          <div className="bg-white p-2 m-2 rounded-full text-[#402E7A] font-bold text-lg hover:bg-[#402E7A] hover:text-white">
             Css
           </div>
         </Container>
         <Container>
-          <div className="bg-lime-700 p-2 m-2 rounded-full text-black font-bold text-lg  hover:bg-red-700">
+          <div className="bg-white p-2 m-2 rounded-full text-[#402E7A] font-bold text-lg hover:bg-[#402E7A] hover:text-white">
             Html 5
           </div>
         </Container>
