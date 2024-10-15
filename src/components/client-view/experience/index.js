@@ -11,6 +11,7 @@ import {
   TimelineItem,
   TimelineSeparator,
 } from "@mui/lab";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
 );
@@ -19,6 +20,13 @@ export default function ClientExperienceAndEducationView({
   educationData,
   experienceData,
 }) {
+  const testimonials = [
+    {
+      name: experienceData.location,
+      quote: experienceData.duration,
+      title: experienceData.company,
+    },
+  ];
   return (
     <div>
       <AnimationWrapper className={"py-6 sm:py-16"}>
@@ -35,7 +43,25 @@ export default function ClientExperienceAndEducationView({
           </h1>
         </div>
       </AnimationWrapper>
-      <BentoGrid className="max-w-4xl mx-auto">
+      <div className="h-[40rem] gap-3 rounded-md flex antialiased bg-transparent  dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+        {experienceData && experienceData.length
+          ? experienceData.map((experienceItem, index) => (
+              <InfiniteMovingCards
+                direction="right"
+                speed="fast"
+                key={index}
+                duration={experienceItem.duration}
+                company={experienceItem.company}
+                location={experienceItem.location}
+                position={experienceItem.position}
+                jobprofile={experienceItem.jobprofile}
+                header={Skeleton}
+                className={index === 3 || index === 6 ? "md:col-span-2" : ""}
+              />
+            ))
+          : null}
+      </div>
+      {/* <BentoGrid className="max-w-4xl mx-auto">
         {experienceData && experienceData.length
           ? experienceData.map((experienceItem, index) => (
               <BentoGridItem
@@ -50,7 +76,7 @@ export default function ClientExperienceAndEducationView({
               />
             ))
           : null}
-      </BentoGrid>
+      </BentoGrid> */}
       <div className="flex flex-col gap-5">
         <AnimationWrapper className={"py-6 sm:py-16"}>
           <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
