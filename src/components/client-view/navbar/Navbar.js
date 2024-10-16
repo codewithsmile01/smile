@@ -58,7 +58,7 @@ function Navbar() {
     },
   ];
   return (
-    <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
+    <BackgroundLines className="items-center justify-center w-full flex-col px-4 hidden md:block">
       <div className="flex z-40 items-center justify-center bg-transparent  pt-20">
         <FloatingDock mobileClassName="translate-y-20" items={links} />
       </div>

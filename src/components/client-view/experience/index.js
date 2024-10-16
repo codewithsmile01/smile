@@ -1,8 +1,5 @@
 "use client";
-import React from "react";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bentio-grid";
-import AnimationWrapper from "../animation-wrapper";
-import { motion } from "framer-motion";
+
 import {
   Timeline,
   TimelineConnector,
@@ -11,118 +8,120 @@ import {
   TimelineItem,
   TimelineSeparator,
 } from "@mui/lab";
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
-);
+import AnimationWrapper from "../animation-wrapper";
+import { motion } from "framer-motion";
 
 export default function ClientExperienceAndEducationView({
   educationData,
   experienceData,
 }) {
-  const testimonials = [
-    {
-      name: experienceData.location,
-      quote: experienceData.duration,
-      title: experienceData.company,
-    },
-  ];
   return (
-    <div>
-      <AnimationWrapper className={"py-6 sm:py-16"}>
-        <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-          <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
-            {"My Experience".split(" ").map((item, index) => (
-              <span
-                key={index}
-                className={`${index === 1 ? "text-green-main" : "text-[#000]"}`}
-              >
-                {item}{" "}
-              </span>
-            ))}
-          </h1>
+    <div className="w-full mt-10 " id="experience">
+      <div className=" flex flex-col md:flex-row gap-8">
+        <div className="flex w-[45%] flex-col gap-5">
+          <div className="flex justify-center items-center">
+            <AnimationWrapper className={"py-6 sm:py-16"}>
+              <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
+                <h1 className="leading-[70px] mb-4 text-5xl font-medium">
+                  {"My Experience".split(" ").map((item, index) => (
+                    <span
+                      key={index}
+                      className={`${
+                        index === 1 ? "text-blue-400" : "text-white"
+                      }`}
+                    >
+                      {item}{" "}
+                    </span>
+                  ))}
+                </h1>
+              </div>
+            </AnimationWrapper>
+          </div>
+          <div>
+            <AnimationWrapper>
+              <div className="flex  w-full">
+                <motion.div className="container">
+                  <Timeline position="right">
+                    {experienceData && experienceData.length
+                      ? experienceData.map((experienceItem, index) => (
+                          <TimelineItem key={index}>
+                            <TimelineSeparator>
+                              <TimelineDot className="bg-blue-400" />
+                              <TimelineConnector className="bg-red-600" />
+                            </TimelineSeparator>
+                            <TimelineContent>
+                              <div className="border-[2px] bg-blue-400 hover:text-blue-400 hover:bg-white p-4 rounded-[8px] hover:border-red-600 border-white mt-[14px] ml-[16px]">
+                                <h3 className="font-extrabold text-xl mt-2">
+                                  {experienceItem.company}{" "}
+                                  {experienceItem.location}
+                                </h3>
+                                <p className="font-extralight mt-2">
+                                  Post :{experienceItem.jobprofile}
+                                </p>
+                                <p className="font-bold">
+                                  Year :{experienceItem.duration}
+                                </p>
+                                <p className="font-extrabold mt-2">
+                                  Position :{experienceItem.position}
+                                </p>
+                              </div>
+                            </TimelineContent>
+                          </TimelineItem>
+                        ))
+                      : null}
+                  </Timeline>
+                </motion.div>
+              </div>
+            </AnimationWrapper>
+          </div>
         </div>
-      </AnimationWrapper>
-      <div className="h-[40rem] gap-3 rounded-md flex antialiased bg-transparent  dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-        {experienceData && experienceData.length
-          ? experienceData.map((experienceItem, index) => (
-              <InfiniteMovingCards
-                direction="right"
-                speed="fast"
-                key={index}
-                duration={experienceItem.duration}
-                company={experienceItem.company}
-                location={experienceItem.location}
-                position={experienceItem.position}
-                jobprofile={experienceItem.jobprofile}
-                header={Skeleton}
-                className={index === 3 || index === 6 ? "md:col-span-2" : ""}
-              />
-            ))
-          : null}
-      </div>
-      {/* <BentoGrid className="max-w-4xl mx-auto">
-        {experienceData && experienceData.length
-          ? experienceData.map((experienceItem, index) => (
-              <BentoGridItem
-                key={index}
-                duration={experienceItem.duration}
-                company={experienceItem.company}
-                location={experienceItem.location}
-                position={experienceItem.position}
-                jobprofile={experienceItem.jobprofile}
-                header={Skeleton}
-                className={index === 3 || index === 6 ? "md:col-span-2" : ""}
-              />
-            ))
-          : null}
-      </BentoGrid> */}
-      <div className="flex flex-col gap-5">
-        <AnimationWrapper className={"py-6 sm:py-16"}>
-          <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-            <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
-              {"My Education".split(" ").map((item, index) => (
-                <span
-                  key={item.index}
-                  className={`${
-                    index === 1 ? "text-green-main" : "text-[#000]"
-                  }`}
-                >
-                  {item}{" "}
-                </span>
-              ))}
-            </h1>
-          </div>
-        </AnimationWrapper>
-        <AnimationWrapper>
-          <div className="flex w-full">
-            <motion.div className="container">
-              <Timeline position="right">
-                {educationData && educationData.length
-                  ? educationData.map((educationItem, id) => (
-                      <TimelineItem key={id}>
-                        <TimelineSeparator>
-                          <TimelineDot className="bg-green-main" />
-                          <TimelineConnector className="bg-green-main" />
-                        </TimelineSeparator>
-                        <TimelineContent>
-                          <div className="border-[2px] p-4 rounded-[8px] border-green-main mt-[14px] ml-[16px]">
-                            <p className="font-bold">{educationItem.year}</p>
-                            <h3 className="font-extrabold mt-2">
-                              {educationItem.college}
-                            </h3>
-                            <p className="font-extrabold mt-2">
-                              {educationItem.degree}
-                            </p>
-                          </div>
-                        </TimelineContent>
-                      </TimelineItem>
-                    ))
-                  : null}
-              </Timeline>
-            </motion.div>
-          </div>
-        </AnimationWrapper>
+        <div className="flex w-[45%] flex-col gap-5">
+          <AnimationWrapper className={"py-6 sm:py-16 items-center"}>
+            <div className="flex flex-col justify-center items-center">
+              <h1 className="leading-[70px] mb-4 text-5xl font-medium">
+                {"My Education".split(" ").map((item, index) => (
+                  <span
+                    key={index}
+                    className={`${
+                      index === 1 ? "text-blue-400" : "text-white"
+                    }`}
+                  >
+                    {item}{" "}
+                  </span>
+                ))}
+              </h1>
+            </div>
+          </AnimationWrapper>
+          <AnimationWrapper>
+            <div className="flex w-full">
+              <motion.div className="container">
+                <Timeline position="right">
+                  {educationData && educationData.length
+                    ? educationData.map((educationItem, index) => (
+                        <TimelineItem key={index}>
+                          <TimelineSeparator>
+                            <TimelineDot className="bg-blue-400" />
+                            <TimelineConnector className="bg-red-600" />
+                          </TimelineSeparator>
+                          <TimelineContent>
+                            <div className="border-[2px] p-4 bg-blue-400 text-white hover:bg-white hover:text-blue-400 rounded-[8px] hover:border-red-600 border-white mt-[14px] ml-[16px]">
+                              <h3 className="font-extrabold text-xl mt-2">
+                                {educationItem.college}
+                              </h3>
+                              <p className="font-extrabold mt-2">
+                                {educationItem.degree}
+                              </p>
+                              <p className="font-bold">{educationItem.year}</p>
+                            </div>
+                          </TimelineContent>
+                        </TimelineItem>
+                      ))
+                    : null}
+                </Timeline>
+              </motion.div>
+            </div>
+          </AnimationWrapper>
+        </div>
       </div>
     </div>
   );
