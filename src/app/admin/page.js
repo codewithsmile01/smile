@@ -64,7 +64,6 @@ export default function AdminView() {
     initialProjectFormData
   );
 
-
   const [allData, setAllData] = useState({});
   const [update, setUpdate] = useState(false);
   const [authUser, setAuthUser] = useState(false);
@@ -132,9 +131,7 @@ export default function AdminView() {
     {
       id: "contact",
       label: "Contact",
-      component: <AdminContactView
-      data={allData && allData?.contact}
-      />,
+      component: <AdminContactView data={allData && allData?.contact} />,
     },
   ];
 
@@ -169,8 +166,7 @@ export default function AdminView() {
     }
   }
 
-  console.log(allData, 'allData');
-
+  console.log(allData, "allData");
 
   async function handleSaveData() {
     const dataMap = {
@@ -194,7 +190,9 @@ export default function AdminView() {
 
   useEffect(() => {
     extractAllDatas();
-  }, [currentSelectedTab]);
+  });
+
+  // currentSelectedTab
 
   function resetFormDatas() {
     setHomeViewFormData(initialHomeFormData);

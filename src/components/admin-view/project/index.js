@@ -29,14 +29,22 @@ const controls = [
   },
 ];
 
-export default function AdminProjectView({ formData, setFormData , handleSaveData , data }) {
+export default function AdminProjectView({
+  formData,
+  setFormData,
+  handleSaveData,
+  data,
+}) {
   return (
     <div className="w-full">
       <div className="bg-[#ffffff] shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <div className="mb-10">
+        <div className="mb-10">
           {data && data.length
-            ? data.map((item) => (
-                <div className="flex flex-col gap-4 border p-4 border-green-600">
+            ? data.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col gap-4 border p-4 border-green-600"
+                >
                   <p>{item.name}</p>
                   <p>{item.technologies}</p>
                   <p>{item.website}</p>
@@ -50,7 +58,10 @@ export default function AdminProjectView({ formData, setFormData , handleSaveDat
           formData={formData}
           setFormData={setFormData}
         />
-        <button onClick={()=> handleSaveData('project')} className="mt-[10px] border border-green-600 p-4 font-bold text-[16px]">
+        <button
+          onClick={() => handleSaveData("project")}
+          className="mt-[10px] border border-green-600 p-4 font-bold text-[16px]"
+        >
           Add Info
         </button>
       </div>
