@@ -27,7 +27,7 @@ export default async function Home() {
   const projectSectionData = await extractAllDatas("project");
 
   return (
-    <div>
+    <div className="h-full w-full bg-grid-black/[0.2]">
       <ClientHomeView data={homeSectionData} />
       <ClientAboutView
         data={

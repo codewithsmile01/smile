@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import AnimationWrapper from "../animation-wrapper";
 import { motion } from "framer-motion";
 import {
@@ -11,7 +11,8 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import aiImage from "../../../assets/ai-image.png";
-
+import { PinContainer } from "@/components/ui/3d-pin";
+import { FlipWords } from "@/components/ui/flip-words";
 function variants() {
   return {
     offscreen: {
@@ -70,17 +71,26 @@ export default function ClientHomeView({ data }) {
 
   const setVariants = useMemo(() => variants(), []);
   const containerRef = useRef(null);
+  const words = [
+    "Full stack developer",
+    "Frontend developer",
+    "backend developer",
+    "modern website developer",
+    "api development",
+    "website maintenance",
+  ];
 
   return (
     <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto" id="home">
       <AnimationWrapper>
         <motion.div
           className={
-            "grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-6 sm:py-16"
+            "flex flex-col sm:flex-row justify-center items-center  gap-8 py-6 sm:py-16"
           }
           variants={setVariants}
         >
           <div className="flex flex-col justify-center items-start row-start-2 sm:row-start-1">
+            <h2 className="text-xl font-bold">WELCOME TO </h2>
             <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-medium leading-normal">
               {data && data.length
                 ? data[0]?.heading.split(" ").map((item, index) => (
@@ -88,7 +98,7 @@ export default function ClientHomeView({ data }) {
                       key={index}
                       className={`${
                         index === 2 || index === 3
-                          ? "text-green-main"
+                          ? "text-green-600"
                           : "text-[#000]"
                       }`}
                     >
@@ -97,9 +107,15 @@ export default function ClientHomeView({ data }) {
                   ))
                 : null}
             </h1>
-            <p className="text-[#000] mt-4 mb-8 font-bold">
+            <h2 className="text-xl font-bold"> I am a </h2>
+            <FlipWords
+              className="text-4xl font-bold text-green-400"
+              words={words}
+            />
+            <p className="text-[#000] text-xl space-x-2 mt-4 mb-8 font-bold">
               {data && data.length ? data[0]?.summary : null}
             </p>
+
             <motion.div className="flex gap-3 cursor-pointer">
               {socialIcons.map((item) => (
                 <motion.div
@@ -124,18 +140,21 @@ export default function ClientHomeView({ data }) {
             <motion.div
               drag
               dragConstraints={containerRef}
-              className="w-[400px] h-[400px] relative bg-green-main"
+              className="relative bg-transparent"
             >
-              <div className="w-[400px] h-[400px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
-              <Image
-                src={aiImage}
-                alt="Profile Picture"
-                layout="responsive"
-                quality={100}
-                height={300}
-                width={300}
-                className="absolute top-[-15px]"
-              />
+              <PinContainer
+                title="code with smile"
+                href="https://codewithsmile01.git"
+                className="w-60 h-60"
+              >
+                <Image
+                  src={aiImage}
+                  alt="Profile Picture"
+                  height={300}
+                  className="absolute top-[-15px]"
+                />
+                {/* <h4 className="text-white">my name is ismail</h4> */}
+              </PinContainer>
             </motion.div>
           </motion.div>
         </motion.div>
