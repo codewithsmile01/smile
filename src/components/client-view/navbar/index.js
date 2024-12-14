@@ -112,3 +112,57 @@ export default function Navbar() {
     </>
   );
 }
+
+
+
+//floting navbar
+
+import React from "react";
+import { FloatingDock } from "@/components/ui/floating-dock";
+import {
+  IconHome,
+  IconCookieMan ,
+  IconUserCog,
+  IconDeviceDesktopCode,
+  IconContract
+  
+} from "@tabler/icons-react";
+import Image from "next/image";
+
+export function FloatingDockDemo() {
+  const links = [
+  {
+    title : "home",
+    icon: (<IconHome className='h-full w-full text-blue-500' />),
+    href : '#',
+  },
+  {
+    title : "about",
+    icon: (<IconCookieMan className='h-full w-full text-blue-500' />),
+    href: '#about',
+  },
+  {
+    title: "experience",
+    icon: (<IconUserCog className='h-full w-full text-blue-500' />),
+    href: '#experience',
+  },
+  {
+    title: "project",
+    
+    icon: (<IconDeviceDesktopCode className='h-full w-full text-blue-500' />),
+    href: '#project',
+  },
+  {
+    title: "contact",
+    icon: (<IconContract className='h-full w-full text-blue-500' />),
+    href : '#contact',
+  },
+];
+  return (
+    (<div className="flex items-center justify-center h-[35rem] w-full">
+      <FloatingDock
+        mobileClassName="translate-y-20"
+        items={links} />
+    </div>)
+  );
+}
