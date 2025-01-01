@@ -6,7 +6,7 @@ import ClientProjectView from "@/components/client-view/project";
 
 async function extractAllDatas(currentSection) {
   const res = await fetch(
-    ` https://smile-tawny.vercel.app/api/${currentSection}/get`,
+    `http://localhost:3000/api/${currentSection}/get`,
     // https://smile-tawny.vercel.app
     //http://localhost:3000
     {

@@ -5,6 +5,7 @@ import AnimationWrapper from "../animation-wrapper";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import aboutMeImage from "../../../assets/about-image.png";
+import { FocusCards } from "@/components/ui/focus-cards";
 
 function variants() {
   return {
@@ -32,8 +33,6 @@ const skillItemVariant = {
 };
 
 export default function ClientAboutView({ data }) {
-  console.log(data, "aboutdata");
-
   const setVariants = useMemo(() => variants(), []);
 
   const aboutDataInfo = [
@@ -52,8 +51,6 @@ export default function ClientAboutView({ data }) {
   ];
 
   const headingText = "Why Hire Me For your Next Project ?";
-  
-  import { FocusCards } from "@/components/ui/focus-cards";
 
   const cards = [
     {
@@ -70,13 +67,12 @@ export default function ClientAboutView({ data }) {
     },
   ];
 
-
   return (
     <div
       className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto"
       id="about"
     >
-       <AnimationWrapper className={"pt-6"}>
+      <AnimationWrapper className={"pt-6"}>
         <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
           <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
             {headingText.split(" ").map((item, index) => (
@@ -92,11 +88,11 @@ export default function ClientAboutView({ data }) {
         </div>
       </AnimationWrapper>
       <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-2 gap-8">
-      <div className="w-full flex">
-        <AnimationWrapper className="rounded-lg w-full grid-flow-row grid grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-green-main bg-ehite-500 z-10">
-          {aboutDataInfo.map((infoItem, index) => (
-            <motion.div
-              className={`flex items-center justify-start
+        <div className="w-full flex">
+          <AnimationWrapper className="rounded-lg w-full grid-flow-row grid grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-green-600 bg-white z-10">
+            {aboutDataInfo.map((infoItem, index) => (
+              <motion.div
+                className={`flex items-center justify-start
                 ${
                   index === 0
                     ? "sm:justify-start"
@@ -105,20 +101,20 @@ export default function ClientAboutView({ data }) {
                     : "sm:justify-end"
                 } py-4 sm:py-6 w-8/12 px-4 sm:w-auto mx-auto sm:mx-0
                 `}
-              key={index}
-              custom={{ duration: 2 + index }}
-              variants={setVariants}
-            >
-              <div className="flex m-0 w-40 sm:w-auto">
-                <div className="flex flex-col">
-                  <FocusCards cards={cards} />;
+                key={index}
+                custom={{ duration: 2 + index }}
+                variants={setVariants}
+              >
+                <div className="flex m-0 w-40 sm:w-auto">
+                  <div className="flex flex-col">
+                    <FocusCards cards={cards} />;
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimationWrapper>
-      </div>
-   
+              </motion.div>
+            ))}
+          </AnimationWrapper>
+        </div>
+
         <AnimationWrapper className="flex w-full">
           <motion.div variants={setVariants} className="h-full w-full p-4">
             <Image
