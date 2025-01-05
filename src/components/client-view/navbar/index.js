@@ -43,10 +43,7 @@ const links = [
 export default function Navbar() {
   return (
     <div className="flex items-center fixed bottom-3 sm:top-[-720px] justify-center h-auto w-full z-20">
-      <FloatingDock
-        // mobileClassName="translate-y-20"
-        items={links}
-      />
+      <FloatingDock mobileClassName="translate-y-20" items={links} />
     </div>
   );
 }
